@@ -1,19 +1,16 @@
-use crate::egui::Egui;
+use crate::{domain::Domain, repository::Repository, ui::Ui};
 
+#[derive(Default)]
 pub struct App {
-    db: rusqlite::Connection,
-    egui: Egui,
 }
 
 impl App {
-    pub fn new(db: rusqlite::Connection) -> anyhow::Result<Self> {
-        Ok(Self {
-            db,
-            egui: Default::default(),
-        })
-    }
-
-    pub fn run(self) {
-        self.egui.run();
+    pub fn run(self) -> anyhow::Result<()> {
+        let db = rusqlite::Connection::open_in_memory()?;
+        let repository = Repository::new(db);
+        let domain = Domain::new(repository);
+        let ui = Ui::new(domain);
+        ui.run();
+        Ok(())
     }
 }

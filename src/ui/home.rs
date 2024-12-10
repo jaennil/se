@@ -1,13 +1,14 @@
 use eframe::egui;
 use strum::IntoEnumIterator as _;
 
-use crate::models::transaction::{self, Transaction};
+use crate::{domain::home, entity::transaction::{self, Transaction}};
 
 #[derive(Default)]
 pub struct Home {
     pub state: State,
     pub utility_state: UtilityState,
     pub transaction: Transaction,
+    domain: home::Domain,
 }
 
 impl Home {
@@ -46,7 +47,7 @@ impl Home {
             ui.horizontal(|ui| {
                 if ui
                     .add(egui::ImageButton::new(
-                        egui::Image::new(egui::include_image!("../assets/new_database.png"))
+                        egui::Image::new(egui::include_image!("../../assets/new_database.png"))
                             .fit_to_exact_size(egui::Vec2 { x: 24.0, y: 24.0 }),
                     ))
                     .on_hover_ui(|ui| {
@@ -58,7 +59,7 @@ impl Home {
                 };
                 if ui
                     .add(egui::ImageButton::new(
-                        egui::Image::new(egui::include_image!("../assets/new_transaction.png"))
+                        egui::Image::new(egui::include_image!("../../assets/new_transaction.png"))
                             .fit_to_exact_size(egui::Vec2 { x: 24.0, y: 24.0 }),
                     ))
                     .on_hover_ui(|ui| {
@@ -241,6 +242,7 @@ impl Home {
                     });
                     ui.horizontal(|ui| {
                         if ui.button("OK").clicked() {
+                            //self.domain.create_transaction
                             dbg!(&self.transaction);
                             //app.database_connection.
                             self.utility_state = UtilityState::None;

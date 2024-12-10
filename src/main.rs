@@ -1,13 +1,14 @@
 use app::App;
-mod models;
+mod entity;
 mod app;
-mod home;
-mod egui;
-mod welcome;
+mod repository;
+mod domain;
+mod ui;
 
 fn main() -> anyhow::Result<()> {
-    let db = rusqlite::Connection::open_in_memory()?;
-    let app = App::new(db)?;
-    app.run();
+    // config
+
+    let app = App::default();
+    app.run()?;
     Ok(())
 }
