@@ -1,14 +1,13 @@
 use eframe::egui;
 use strum::IntoEnumIterator as _;
 
-use crate::{domain::home, entity::transaction::{self, Transaction}};
+use crate::{domain::Domain, entity::transaction::Transaction};
 
-#[derive(Default)]
 pub struct Home {
     pub state: State,
     pub utility_state: UtilityState,
     pub transaction: Transaction,
-    domain: home::Domain,
+    domain: Domain,
 }
 
 impl Home {
@@ -243,8 +242,7 @@ impl Home {
                     ui.horizontal(|ui| {
                         if ui.button("OK").clicked() {
                             //self.domain.create_transaction
-                            dbg!(&self.transaction);
-                            //app.database_connection.
+                            //dbg!(&self.transaction);
                             self.utility_state = UtilityState::None;
                             //let transaction = Transaction{
                             //    date: date,
