@@ -19,7 +19,12 @@ impl Ui {
         Self {
             domain,
             state: Default::default(),
-            home: Default::default(),
+            home: Home {
+                state: Default::default(),
+                utility_state: Default::default(),
+                transaction: Default::default(),
+                domain,
+            }
         }
     }
 

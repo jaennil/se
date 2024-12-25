@@ -1,5 +1,3 @@
-pub mod transaction;
-
 use crate::repository::Repository;
 
 pub struct Domain {

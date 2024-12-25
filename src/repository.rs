@@ -5,7 +5,7 @@ pub struct Repository {
 impl Repository {
     pub fn new(db: rusqlite::Connection) -> Self {
         Self {
-            db,
+            db
         }
     }
 }

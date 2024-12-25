@@ -2,12 +2,13 @@ use eframe::egui;
 use strum::IntoEnumIterator as _;
 
 use crate::{domain::Domain, entity::transaction::Transaction};
+use crate::entity::transaction;
 
 pub struct Home {
     pub state: State,
     pub utility_state: UtilityState,
     pub transaction: Transaction,
-    domain: Domain,
+    pub domain: Domain,
 }
 
 impl Home {
